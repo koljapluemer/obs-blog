@@ -13,6 +13,20 @@ A Python script that converts Obsidian markdown files to HTML while preserving d
   - Ignores images
 - **Non-Markdown Files**: Copies non-markdown files as-is to the output directory
 - **No Styling**: Generates clean, semantic HTML without CSS styling
+- **Modular Design**: Markdown conversion logic is separated into reusable modules
+
+## Project Structure
+
+```
+obs-blog/
+├── converter.py              # Main conversion script
+├── obs-blog.yaml            # Configuration file
+├── requirements.txt         # Python dependencies
+├── README.md               # This file
+└── utils/
+    ├── __init__.py         # Package initialization
+    └── convert_markdown.py # Markdown conversion utilities
+```
 
 ## Installation
 
@@ -79,8 +93,22 @@ site/
 - **Code Blocks**: Standard markdown code blocks are preserved
 - **Images**: Image references are ignored (not converted to HTML)
 
+## Architecture
+
+The converter is built with a modular architecture:
+
+- **`converter.py`**: Main orchestration script that handles file operations and directory traversal
+- **`utils/convert_markdown.py`**: Dedicated module for markdown processing and Obsidian feature handling
+- **`MarkdownConverter` class**: Handles all markdown-to-HTML conversion with Obsidian-specific features
+
+This separation allows for:
+- Easy testing of markdown conversion logic
+- Reuse of markdown processing in other contexts
+- Clear separation of concerns between file operations and content processing
+
 ## Requirements
 
 - Python 3.6+
 - `markdown` library
 - `PyYAML` library
+
